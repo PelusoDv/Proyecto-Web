@@ -1,0 +1,646 @@
+html {
+  overflow-x: hidden;
+}
+
+body {
+    background-color: rgb(20, 20, 20);
+    margin: 0 !important;
+    font-family: 'Oswald', sans-serif;
+    overflow: clip
+}
+
+main {
+    background-color: white;
+}
+
+header {
+    margin-top: 5.2vh;
+}
+
+.site-logo {
+    width: 15vw;
+    text-align: center;
+}
+
+.logotipo > img {
+    padding: 5px 3.5rem 6px 3.5rem;
+}
+
+.hamb-bar {
+    display: none;
+}
+
+.scroll {
+    background-color: rgb(20, 20, 20);
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    width: -webkit-fill-available;
+}
+
+.hamb-menu {
+    /* Posicionamiento y Apariencia del Menú Desplegable */
+    position: fixed;
+    display: grid;
+    top: -2%; /* Empieza justo debajo de la barra de navegación */
+    left: 0;
+    min-width: 300px;
+    background-color:white;
+    transition: all 0.3s ease-in-out;
+    z-index: 10;
+    padding-inline-start: 0;
+
+    /* Estado Inicial: OCULTO */
+    transform: translateX(-100%); /* Desplazado a la izquierda, invisible */
+    opacity: 0;
+    pointer-events: none; /* Deshabilita clicks estando oculto */
+}
+
+/* --- Estado ACTIVO/VISIBLE del Menú (Clase JS) --- */
+.hamb-menu.open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto; /* Permite clicks*/    
+}
+
+#Inicio {
+    color: burlywood;
+}
+
+.extra{
+    height: 52vh;
+}
+
+.hamb-item {
+    border-bottom: solid 2px whitesmoke;
+}
+
+.hamb-item a {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(20, 20, 20);
+    padding: 5%;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+}
+
+nav {
+    z-index: 2;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    padding-top: 1vh;
+}
+
+ul {
+    display: flex;
+    padding-inline-start: 8vw;
+}
+
+li {
+    padding: 1rem 1vw 1rem 1vw;
+    display: ruby;
+    letter-spacing: 1px;
+    font-size: small;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+}
+
+li > a:hover {
+    color: darkgray;
+}
+
+.sliders {
+    display: inline-flex;
+    color: white;
+    background-color: rgb(20, 20, 20);
+    height: 100vh;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    min-width: -webkit-fill-available;
+}
+
+.sliders .slide {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    padding-left: 8vw;
+    align-content: center;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    min-width: -webkit-fill-available;
+    height: inherit;
+}
+
+.btns {
+    transform: scale(0.75);
+    z-index: 2;
+    position: relative;
+    margin: 16px;
+}
+
+.slidebtn {
+    margin: 0 5px;
+    padding: 0px 7px;
+    border-radius: 100%;
+    color: rgb(192,192,192);
+    background-color: rgb(192,192,192);
+    transition: all 0.3s ease-in-out;
+    border-style: inset;
+}
+
+.slidebtn:hover {
+    color: rgb(90, 90, 90);
+    background-color: rgb(90,90,90);
+}
+
+.slidebtn:focus {
+    border-style: outset;
+}
+
+.sliders .slide:first-child {
+    z-index: 1;
+    opacity: 1;
+}
+
+#slider1 {
+    background-image: url(https://tiendadecafe.com.ar/wp-content/uploads/2021/03/sidebar_cafe01.jpg);
+}
+
+#slider2 {
+    background-image: url(https://tiendadecafe.com.ar/wp-content/uploads/2021/03/sidebar_capsulas04_v2.jpg);
+}
+
+#slider3 {
+    background-image: url(https://tiendadecafe.com.ar/wp-content/uploads/2021/03/sidebar_tostadores02.jpg);
+}
+
+.text-block {
+    letter-spacing: -0.5px;
+    font-size: 1.8rem;
+}
+
+.text-title {
+    letter-spacing: 2.5px;
+    font-size: 2rem;
+}
+
+.text-body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: lightgray;
+}
+
+.text-body > * {
+    margin: 8px 0 0 0;
+    margin-bottom: 4.5vh;
+}
+
+.text-title > *, .text-block > * {
+    margin: -0.2em 0;
+}
+
+.text-block > * {
+    font-weight: lighter;
+}
+
+button {
+    background: none;
+    border-color:rgb(192,192,192,0.6);
+    border-style: solid;
+    padding: 16px 32px 16px 32px;
+    transition: border-color 0.25s ease-in-out;
+}
+
+button:hover {
+    border-color: rgba(255, 255, 255, 0.75);
+}
+
+article > .title {
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+article > h2 {
+    font-size: 2rem;
+    font-weight: bolder;
+    margin: 5vh 0 2vh 0;
+} 
+
+article > h4 {
+    font-weight: lighter;
+    padding-top: 5vh;
+    color: burlywood;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+hr {
+    text-align: center;
+    width: 7rem;
+    font-size: 2.2rem;
+    border: 1.2px solid burlywood;
+}
+
+.cafes {
+    margin: 20px 3%;
+    background-color: white;
+    height: fit-content;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    justify-items: center;
+}
+
+h3 > a {
+    color: black;
+    font-weight: lighter;
+    text-transform: capitalize;
+}
+
+.product-element {
+    margin: 2% 1% 2% 1%;  
+    transition: all 0.4s ease-in-out;
+    opacity: 1; 
+}
+
+.product-title {
+    text-align: center;
+    font-size: 1em;
+}
+
+.product-image-link > img {
+    max-width: 250px;
+    width: 27.5vw;
+    min-width: 250px;
+}
+
+.banners {
+    display: flex;
+    margin: 20px 3%;
+}
+
+.banners > * {
+    margin: 0 1%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.banners img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s;
+}
+
+.banners > div:hover img {
+    transform: scale(1.1);
+}
+
+.label {
+    position: relative;
+    top: -25vh;
+    width: max-content;
+}
+
+.label > * {
+    margin: 0 3vw;
+}
+
+.label > .banner-text {
+    background-color: whitesmoke;
+    padding: 2px 10px;
+}
+
+.label > .banner-title {
+    color: white;
+    font-size: 2.4rem;
+    margin: 8px 3vw;
+}
+
+.label > button {
+    border: none;
+    background-color:rgb(20, 20, 20);
+    padding: 11px 13px;
+    font-weight: bold;
+}
+
+.main {
+    margin-top: 4vh;
+    padding-bottom: 4.4%;
+    background-color:whitesmoke;
+}
+
+article > h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.info-box-content {
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0 3%;
+}
+
+figure {
+    margin: 0 48px;
+}
+
+figure > img {
+    width: 690px;
+    max-width: 60vw;
+}
+
+aside {
+    color: darkgray;
+    width: 20%;
+}
+
+aside h4 {
+    color: burlywood;
+    font-size: 1.3rem;
+    margin-top: 2vh;
+    margin-bottom: 0;
+}
+
+aside p {
+    margin-top: 1vh;
+    margin-bottom: 5vh;
+    font-size: 0.95rem;
+}
+
+.left {
+    text-align: end;
+}
+
+.right {
+    text-align: start;
+}
+
+.outro {
+    color: white;
+    background-image: url(https://tiendadecafe.com.ar/wp-content/uploads/2021/03/home-tienda.jpg?id=425);
+    background-position: center;
+    background-size: cover;
+    height: 85vh;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+}
+
+.outro h3 {
+    font-size: 2.75rem;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.outro h2 {
+    font-size: 4rem;
+    letter-spacing: 2px;
+    color: burlywood;
+    margin: -2vh 0;
+}
+
+.outro p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.footer {
+    background-color: rgb(20, 20, 20);
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    min-height: 40vh;
+    padding-top: 6vh;
+}
+
+.footer > * {
+    margin: 0 1%;
+    width: -webkit-fill-available;
+}
+
+.footer ul {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding: 0;
+    flex-direction: column;
+}
+
+.logotipo img {
+    padding-left: 0;
+    padding-right: 9.5rem;
+}
+
+.footer li {
+    padding: 0 0 1.8vh 0;    
+}
+
+.footer a {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: capitalize;
+    color:  darkgrey;
+    letter-spacing: -0.75px;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+.contenido > span, .ayuda > span, 
+.newsletter > span, .newsletter p{
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: burlywood;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    display: grid;
+    justify-items: start;
+    margin: 2.5vh 8px;
+}
+
+input {
+    color: white;
+    background-color: rgb(20, 20, 20);
+    border-radius: 4px;
+    min-width: 250px;
+    width: 19vw;
+    height: 5.2vh;
+    margin: 4px 0;
+    border: 0.8px solid whitesmoke;
+    padding-left: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: -0.75px;
+}
+
+input::placeholder {
+    color: darkgrey;
+    font-size: 0.9rem;
+}
+
+form button {
+    border-radius: 4px;
+    background-color: burlywood; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: -0.8px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border-style: none;
+    margin: 4px 0;
+    padding: 1.3vh 1.3vw;
+    color: rgb(20, 20, 20);
+    transition: background-color 0.25s ease-in-out;
+}
+
+form button:hover {
+    background-color:rgb(180, 146, 102);
+}
+
+.newsletter p {
+    margin: 0;
+}
+
+.rrss {
+    margin: 2vh 0;
+}
+
+.rrss img {
+    width: 18px;
+    margin: 0 4px;
+    background-color: rgb(90, 90, 90);
+    border-radius: 100%;
+    padding: 6px;
+    transition: background-color 0.25s ease-in-out;
+}
+
+.rrss img:hover {
+    background-color: rgb(180, 146, 102);
+}
+
+footer {
+    background-color: rgb(20, 20, 20);
+    color: white;
+    font-size: 0.8rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: -0.6px;
+    padding-bottom: 3vh;
+}
+
+footer hr {
+    width: 100vw;
+    border: 1px solid rgba(90, 90, 90, 0.5);
+}
+
+small {
+    padding-left:2vw;
+}
+
+@media(max-width: 990px) {
+    .info-box-content {
+        display: grid;
+        justify-items: center;
+        justify-content: normal;
+        margin: 0 9%;
+    }
+
+    aside {
+        width: auto !important;
+    }
+
+    .left {
+        text-align: start !important; 
+    }
+
+    figure {
+        margin: 0;
+    }
+
+    figure > img {
+        max-width: 80vw;
+        width: auto;
+    }
+
+    footer {
+        text-align: center;
+    }
+}
+
+@media (max-width: 980px) {
+    .top-bar{
+        display: none;
+    }    
+
+    .hamb-bar {
+        background-color: rgb(20, 20, 20);
+        width: 96%;
+        padding: 1vh 2vw;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .hamb-btn {
+        color: white;
+        font-size: xx-large;
+        border: none;
+        padding: 0;
+        transform: scaleX(1.3);
+        cursor: pointer;
+    }
+
+    .site-logo {
+        width: 94vw;
+    }
+}
+
+@media (max-width: 768px){
+    .banners {
+        display: grid;
+    }
+
+    .banners > * {
+        margin: 5px 1%;
+    }
+
+    .footer  {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+    }
+
+    .footer > * {
+        grid-column: span 1;
+        margin: 0 3%;
+    }
+
+    .footer > .logotipo, .footer > .newsletter {
+        grid-column: span 2;
+    }
+
+    input {
+        width: 42vw !important;
+    }
+}
+
+.slide > * {
+    opacity: 0;
+    transform: translateY(80%);
+    transition: all 0.4s ease-out;
+}
+
+.activo {
+    opacity: 1;
+    transform: translateY(0%);
+}
