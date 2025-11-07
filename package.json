@@ -12,6 +12,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.5",
+    "@types/mongoose": "^5.11.96",
     "express": "^5.1.0",
     "typescript": "^5.9.3"
   },
