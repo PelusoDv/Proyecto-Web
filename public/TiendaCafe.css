@@ -249,9 +249,10 @@ hr {
     height: fit-content;
     align-items: center;
     transition: all 0.4s ease-in-out;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 h3 > a {

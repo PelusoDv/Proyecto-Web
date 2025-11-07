@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="TiendaCafe.css">
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
     <script src="TiendaCafe.js" defer></script>
+    <script src="form.js" defer></script>
 </head>
 
 <body>
@@ -316,11 +317,9 @@
             </section>
             <section class="newsletter">
                 <span>¡Sucribite para recibi recibir descuentos y novedades exclusivas!</span>
-                <form
-                    action="mailto:nico.vithe15@gmail.com?subject=Parcial%20Programacion%20Web&body=Hola,%20estos%20datos%20son%20del%20formulario%20HTML:"
-                    method="post">
-                    <input type="text" placeholder="Tu nombre">
-                    <input type="email" placeholder="Tu email">
+                <form method="post" id="contactForm"> <!--  action="mailto:nico.vithe15@gmail.com?subject=Parcial%20Programacion%20Web&body=Hola,%20estos%20datos%20son%20del%20formulario%20HTML:" -->
+                    <input type="text" id="name" placeholder="Tu nombre">
+                    <input type="email" id="email" placeholder="Tu email">
                     <button type="submit">Suscribirme</button>
                 </form>
                 <p>Contactate con nosotros</p>
