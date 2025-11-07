@@ -1,7 +1,8 @@
 import express from "express";
-import fs from "fs";
 import cors from "cors";
 import path from "path";
+import { conectarDB } from "./src/database";
+import { Contacto } from "./src/models/Contacto";
 
 const app = express();
 const port = 3000;
@@ -9,27 +10,26 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
+// Conexión a MongoDB
+conectarDB();
+
 const publicPath = path.join(__dirname, "public");
 
 app.use(express.static(publicPath));
 
-app.post("/guardar", (req, res) => {
-    const nuevoDato = req.body;
-
-    const filePath = path.join(publicPath, "datos.json");
-
-    // Si el archivo no existe, crearlo vacío
-    if (!fs.existsSync(filePath)) {
-        fs.writeFileSync(filePath, "[]", "utf8");
+// Ruta POST para guardar contacto
+app.post("/guardar", async (req, res) => {
+    try {
+        const nuevoContacto = new Contacto(req.body);
+        await nuevoContacto.save();
+        res.send("Dato guardado correctamente en MongoDB ✅");
+    } catch (error) {
+        console.error("Error al guardar en MongoDB:", error);
+        res.status(500).send("Error al guardar el dato ❌");
     }
-    
-    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    data.push(nuevoDato);
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
-
-    res.send("Dato guardado correctamente ✅");
 });
 
+// Servir HTML principal
 app.get("/", (req, res) => {
     res.sendFile(path.join(publicPath, "TiendaCafe.html"));
 });
