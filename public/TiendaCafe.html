@@ -8,51 +8,15 @@
     <link rel="stylesheet" type="text/css" href="TiendaCafe.css">
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
     <script src="TiendaCafe.js" defer></script>
-    <script src="form.js" defer></script>
+    <script src="contactForm.js" defer></script>
+    <script src="loginForm.js" defer></script>
 </head>
 
 <body>
-    <header>
-        <nav class="hamb-bar">
-            <button class="hamb-btn">≡</button>
-            <ul class="hamb-menu">
-                <li class="hamb-item">
-                    <a id="Inicio" href="https://tiendadecafe.com.ar/"><span>Inicio</span></a>
-                </li>
-                <li class="hamb-item">
-                    <a href="https://tiendadecafe.com.ar/tienda/"><span>Nuestro café</span></a>
-                </li>
-                <li class="hamb-item">
-                    <a href="https://tiendadecafe.com.ar/tutoriales/"><span>Tutoriales</span></a>
-                </li>
-                <li class="hamb-item">
-                    <a href="https://tiendadecafe.com.ar/locales/"><span>Locales</span></a>
-                </li>
-                <li class="hamb-item">
-                    <a href="https://tiendadecafe.com.ar/menu-tienda/"><span>Nuestro menú</span></a>
-                </li>
-                <li class="hamb-item">
-                    <a href="https://tiendadecafe.com.ar/trabaja-en-tdc/"><span>Trabajá con nosotros</span></a>
-                </li>
-                <li class="hamb-item">
-                    <a href="https://tiendadecafe.com.ar/franquicias/"><span>Franquicias</span></a>
-                </li>
-                <li class="hamb-item">
-                    <a href="https://tiendadecafe.com.ar/contacto/"><span>Contacto</span></a>
-                </li>
-                <div class="extra"></div>
-            </ul>
+    <header> <!-- Cabecera para contener las barras de navegacion -->
+        <nav class="top-bar"> <!-- Barra de navegacion de escritorio -->
             <div class="site-logo">
-                <a href="https://tiendadecafe.com.ar/" rel="home">
-                    <img src="https://tiendadecafe.com.ar/wp-content/uploads/2021/02/tienda-de-cafe.png"
-                        alt="Tienda de café" />
-                </a>
-            </div>
-        </nav>
-
-        <nav class="top-bar">
-            <div class="site-logo">
-                <a href="https://tiendadecafe.com.ar/" rel="home">
+                <a href="http://localhost:3000/" rel="home">
                     <img src="https://tiendadecafe.com.ar/wp-content/uploads/2021/02/tienda-de-cafe.png"
                         alt="Tienda de café" />
                 </a>
@@ -80,16 +44,73 @@
                     <a href="https://tiendadecafe.com.ar/contacto/"><span>Contacto</span></a>
                 </li>
             </ul>
-        </nav>
-    </header> <!--END MAIN HEADER-->
+            <button class="logbtn">
+                <p>LogIn</p>
+            </button>
+        </nav> <!-- Fin de barra de escritorio-->
 
-    <main> <!-- MAIN CONTENT AREA -->
-        <article class="carousel">
+        <div id="Modal" class="modal hidden"> <!-- Modal para logearse -->
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <section>
+                    <h2 class="modalTitle"> Inicie Sesion </h2>
+                    <form method="post" id="loginForm">
+                        <input type="text" id="user" placeholder="Tu usuario o email">
+                        <input type="password" id="password" placeholder="Tu password">
+                        <button type="submit" class="modalbtn">Ingresar</button>
+                    </form>
+                </section>
+            </div>
+        </div>
+
+        <nav class="hamb-bar"> <!-- Barra de navegacion para mobil -->
+            <button class="hamb-btn">≡</button>
+            <ul class="hamb-menu">
+                <li class="hamb-item">
+                    <a id="Inicio" href="http://localhost:3000/"><span>Inicio</span></a>
+                </li>
+                <li class="hamb-item">
+                    <a href="https://tiendadecafe.com.ar/tienda/"><span>Nuestro café</span></a>
+                </li>
+                <li class="hamb-item">
+                    <a href="https://tiendadecafe.com.ar/tutoriales/"><span>Tutoriales</span></a>
+                </li>
+                <li class="hamb-item">
+                    <a href="https://tiendadecafe.com.ar/locales/"><span>Locales</span></a>
+                </li>
+                <li class="hamb-item">
+                    <a href="https://tiendadecafe.com.ar/menu-tienda/"><span>Nuestro menú</span></a>
+                </li>
+                <li class="hamb-item">
+                    <a href="https://tiendadecafe.com.ar/trabaja-en-tdc/"><span>Trabajá con nosotros</span></a>
+                </li>
+                <li class="hamb-item">
+                    <a href="https://tiendadecafe.com.ar/franquicias/"><span>Franquicias</span></a>
+                </li>
+                <li class="hamb-item">
+                    <a href="https://tiendadecafe.com.ar/contacto/"><span>Contacto</span></a>
+                </li>
+                <div class="extra"></div> <!-- Espacio vacio para completar la altura del menu desplegable -->
+            </ul>
+            <div class="site-logo">
+                <a href="http://localhost:3000/" rel="home">
+                    <img src="https://tiendadecafe.com.ar/wp-content/uploads/2021/02/tienda-de-cafe.png"
+                        alt="Tienda de café" />
+                </a>
+            </div>
+            <button class="logbtn">
+                <p>LogIn</p>
+            </button>
+        </nav> <!-- Fin de barra mobil-->
+    </header> <!-- Fin de la cabecera -->
+
+    <main> <!-- Contenido principal -->
+        <article class="carousel"> <!-- Carrusel de imagenes -->
             <section class="sliders">
                 <div class="slide" id="slider1">
                     <div>
                         <span class="text-block">
-                            <h2 class="title">
+                            <h2>
                                 Tu café preferido
                             </h2>
                         </span>
@@ -110,12 +131,12 @@
                 <div class="slide" id="slider2">
                     <div>
                         <span class="text-block">
-                            <h2 class="title">
+                            <h2>
                                 Proba nuestras
                             </h2>
                         </span>
                         <span class="text-title">
-                            <h1 class="title">
+                            <h1>
                                 CAPSULAS
                             </h1>
                         </span>
@@ -131,12 +152,12 @@
                 <div class="slide" id="slider3">
                     <div>
                         <span class="text-block">
-                            <h2 class="woodmart-title-container">
+                            <h2>
                                 Desde 2007
                             </h2>
                         </span>
                         <span class="text-title">
-                            <h1 class="woodmart-title-container">
+                            <h1>
                                 TOSTANDO TU CAFÉ
                             </h1>
                         </span>
@@ -151,11 +172,11 @@
                     <a class="slidebtn" href="#slider3">■</a>
                 </div>
             </section>
-        </article>
-        <article class="intro">
-            <h2 class="title">NUESTROS PRODUCTOS</h2>
+        </article> <!-- Fin del carrusel -->
+        <article class="central"> <!-- Articulo Central con los productos -->
+            <h2>NUESTROS PRODUCTOS</h2>
             <hr>
-            <section class="sliders cafes">
+            <section class="cafes"> <!-- Tarjetas de productos -->
                 <div class="product-element">
                     <a href="https://tiendadecafe.com.ar/producto/cafe-en-grano-molido-brasil/"
                         class="product-image-link">
@@ -205,9 +226,9 @@
                             href="https://tiendadecafe.com.ar/producto/capsulas-de-cafe-colombia/">Cápsulas de Café
                             Colombia</a></h3>
                 </div>
-            </section>
-            <section class="banners">
-                <div class="banner-image-1">
+            </section> <!-- Fin de las tarjetas -->
+            <section class="banners"> <!-- Banners al final del articulo principal -->
+                <div>
                     <img src="https://tiendadecafe.com.ar/wp-content/uploads/2021/04/bannerpromo_cafe_02_v2.jpg"
                         alt="bannerpromo_cafe_02_v2" title="bannerpromo_cafe_02_v2" />
                     <div class="label">
@@ -218,8 +239,7 @@
                         </button>
                     </div>
                 </div>
-
-                <div class="banner-image-2">
+                <div>
                     <img src="https://tiendadecafe.com.ar/wp-content/uploads/2025/04/TIENDA-042400313-1-scaled-760x420.jpg"
                         alt="TIENDA 042400313-1" title="TIENDA 042400313-1" />
                     <div class="label">
@@ -230,9 +250,9 @@
                         </button>
                     </div>
                 </div>
-            </section>
-        </article>
-        <article class="main">
+            </section> <!-- Fin de los banners -->
+        </article> <!-- Final del articulo central -->
+        <article class="info"> <!-- Articulo de informacion sobre los productos-->
             <h4 class="title">NUESTRO CAFÉ</h4>
             <h2>¿CUÁL VAS A ELEGIR HOY?</h2>
             <hr>
@@ -282,18 +302,18 @@
                     </span>
                 </aside>
             </section>
-        </article>
+        </article> <!-- Fin del Articulo informativo -->
 
-        <article class="outro">
+        <article class="final"> <!-- Articulo final de contacto -->
             <h3>SIEMPRE HAY UN</h3>
             <h2>TIENDA CERCA TUYO</h2>
             <p>Encontrá nuestra sucursal más cercana.</p>
             <button>
                 <a href="https://tiendadecafe.com.ar/locales/" title="">INGRESAR</a>
             </button>
-        </article>
+        </article> <!-- Final del articulo de contacto final-->
 
-        <article class="footer">
+        <article class="footer"> <!-- Footer del contenido principla -->
             <div class="logotipo">
                 <img src="https://tiendadecafe.com.ar/wp-content/uploads/2021/02/tienda-de-cafe.png" alt="logotipo">
             </div>
@@ -317,7 +337,8 @@
             </section>
             <section class="newsletter">
                 <span>¡Sucribite para recibi recibir descuentos y novedades exclusivas!</span>
-                <form method="post" id="contactForm"> <!--  action="mailto:nico.vithe15@gmail.com?subject=Parcial%20Programacion%20Web&body=Hola,%20estos%20datos%20son%20del%20formulario%20HTML:" -->
+                <form method="post" id="contactForm">
+                    <!--  action="mailto:nico.vithe15@gmail.com?subject=Parcial%20Programacion%20Web&body=Hola,%20estos%20datos%20son%20del%20formulario%20HTML:" -->
                     <input type="text" id="name" placeholder="Tu nombre">
                     <input type="email" id="email" placeholder="Tu email">
                     <button type="submit">Suscribirme</button>

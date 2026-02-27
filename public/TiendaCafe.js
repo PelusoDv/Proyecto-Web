@@ -1,10 +1,12 @@
-
 const slideBtns = document.querySelectorAll(".slidebtn");
 const sliders = document.querySelectorAll(".slide");
+const modal = document.getElementById("Modal");
+const closeButton = document.querySelector(".close-button");
+const productos = document.querySelectorAll(".product-element")
+const modlabtn = document.querySelector(".modalbtn");
+const inputs = document.querySelectorAll("#loginForm input");
 let actual = 0;
 let intervalo;
-let posicion = 0;
-const productos = document.querySelectorAll(".product-element")
 const total = productos.length - 1;
 
 function mostrarSlide(index) {
@@ -57,7 +59,6 @@ slideBtns.forEach(btn => {
     });
 });
 
-
 // 1. Selecciona el botón y el menú
 const menuButton = document.querySelector('.hamb-bar button');
 const menuList = document.querySelector('.hamb-menu');
@@ -109,7 +110,9 @@ const manejarScroll = () => {
     if (window.scrollY >= puntoFijo) {
         // El usuario ha pasado el punto de fijación
         barraDesk.classList.add('scroll');
+        barraDesk.style.opacity = "1";
         barraMov.classList.add('scroll');
+        barraMov.style.opacity = "1";
     } else {
         // El usuario está por encima o regresó al punto de fijación
         barraDesk.classList.remove('scroll');
@@ -121,7 +124,58 @@ const manejarScroll = () => {
 window.addEventListener('scroll', manejarScroll);
 
 // Recalcular el punto fijo si la ventana cambia de tamaño
-window.addEventListener('resize', establecerPuntoFijo);
+window.addEventListener('resize', establecerPunto);
 
 // Ejecutarlo una vez al cargar la página (por si recargan en medio del scroll)
 manejarScroll();
+
+// Función para abrir el modal
+function openModal() {
+    modal.classList.remove("hidden");
+}
+
+// Función para cerrar el modal
+function closeModal() {
+    modal.classList.add("hidden");
+}
+
+// Evento para cerrar el modal si se hace clic fuera de él
+window.addEventListener("click", function (event) {
+    if (event.target === modal) { // Asegura que el clic fue en el fondo del modal
+        closeModal();
+    }
+});
+
+// Evento para el botón de cerrar el modal (la 'x')
+closeButton.addEventListener("click", closeModal);
+
+document.querySelectorAll(".logbtn").forEach(btn => {
+    btn.addEventListener("click", openModal);
+});
+
+// codigo relacionadas con el usuario logeado
+const usuarioGuardado = localStorage.getItem("usuarioLogueado");
+
+function logout() {
+    localStorage.removeItem("usuarioLogueado");
+    location.reload();
+}
+
+if (usuarioGuardado) {
+    const usuario = JSON.parse(usuarioGuardado);
+    console.log("Sesión activa:", usuario.name);
+
+    // Ejemplo: cambiar botón login por
+    document.querySelectorAll(".logbtn").forEach(btn => {
+        btn.innerHTML = "<p>LogOut</p>";
+    });
+
+    document.querySelector(".modalTitle").textContent = "Hasta la proxima, " + usuario.name + "!";
+
+    inputs.forEach(input => {
+        input.classList.add("undisplayed");
+    });
+
+    modlabtn.textContent = "Cerrar Sesión";
+    modlabtn.addEventListener("click", logout);
+}

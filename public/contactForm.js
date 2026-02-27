@@ -1,7 +1,7 @@
-var form = document.getElementById("contactForm");
-form.addEventListener("submit", function (event) {
+const contactForm = document.getElementById("contactForm");
+contactForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    var contacto = {
+    let contacto = {
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
     };
