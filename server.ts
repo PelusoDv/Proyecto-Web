@@ -30,38 +30,41 @@ app.post("/guardar", async (req, res) => {
     }
 });
 
-// Ruta GET para el usuario principal
-app.get("/usuarios", async (req, res) => {
+// Ruta POST para login de usuarios
+app.post("/login", async (req, res) => {
     try {
-        // Buscar todos los usuarios
-        const usuarios = await Usuario.find();
+        const { username, password } = req.body;
+        const usuario = await Usuario.findOne({
+            $or: [
+                { name: username },
+                { email: username }
+            ]
+        });
 
-        // Si no hay ninguno, crear uno por defecto
-        if (usuarios.length === 0) {
-            const nuevoUsuario = new Usuario({
-                name: "NicoDK",
-                email: "admin@admin.com",
-                password: "admin123"
-            });
-
-            await nuevoUsuario.save();
-
-            console.log("🟢 Nuevo usuarios creado por defecto");
-
-            return res.json([nuevoUsuario]); // enviamos lista con el único usuario creado
+        if (!usuario) {
+            return res.status(401).json({ error: "Usuario no encontrado" });
+        }
+        if (usuario.password !== password) {
+            return res.status(401).json({ error: "Contraseña incorrecta" });
         }
 
-        // Si había usuarios, enviarlos
-        res.json(usuarios);
+        // IMPORTANTE: no recuperar password en la respuesta, solo los datos necesarios para la sesión
+        const usuarioSeguro = {
+            id: usuario._id,
+            name: usuario.name,
+            email: usuario.email
+        };
+
+        res.json(usuarioSeguro);
 
     } catch (error) {
-        console.error("❌ Error al obtener usuarios:", error);
-        res.status(500).json({ error: "Error al obtener usuarios" });
+        console.error("Error en login:", error);
+        res.status(500).json({ error: "Error en el servidor" });
     }
 });
 
 // Servir HTML principal
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
     res.sendFile(path.join(publicPath, "TiendaCafe.html"));
 });
 

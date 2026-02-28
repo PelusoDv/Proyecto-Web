@@ -165,17 +165,20 @@ if (usuarioGuardado) {
     const usuario = JSON.parse(usuarioGuardado);
     console.log("Sesión activa:", usuario.name);
 
-    // Ejemplo: cambiar botón login por
+    // Cambiar botón login a logout
     document.querySelectorAll(".logbtn").forEach(btn => {
         btn.innerHTML = "<p>LogOut</p>";
     });
 
+    // Cambiar el título del modal
     document.querySelector(".modalTitle").textContent = "Hasta la proxima, " + usuario.name + "!";
 
+    // Ocultar los inputs del formulario
     inputs.forEach(input => {
         input.classList.add("undisplayed");
     });
 
+    // Cambiar el botón del modal para cerrar sesión
     modlabtn.textContent = "Cerrar Sesión";
     modlabtn.addEventListener("click", logout);
 }
