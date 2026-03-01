@@ -246,11 +246,21 @@ article > h4 {
 .product-title {
     text-align: center;
     font-size: 1em;
-}
-.product-title  a {
     color: black;
     font-weight: lighter;
     text-transform: capitalize;
+}
+.adminbtns {
+    display: flex;
+    justify-content: center;
+}
+.adminbtns > button {
+    padding: 6px 12px;
+    margin: 8px;
+}
+.cafes button:hover {
+    background-color: burlywood;
+    border-color: rgb(20, 20, 20);
 }
 
 /*Estilo de los banner al final del articulo principal */
@@ -489,7 +499,7 @@ small {
     padding-left:2vw;
 }
 
-/* Clases para el modal del login */
+/* Clases para el manejo de los modales */
 .modal {
     position: fixed;
     /* Se queda fijo en la pantalla */
@@ -526,8 +536,11 @@ small {
     align-items: center;
     margin-top: 2vh;
 }
-.modal-content>section>form {
+#productForm, #loginForm {
     justify-items: center;
+}
+#productForm > input {
+    width: 35vw;
 }
 .modal-content>section>form>button {
     margin-top: 4vh;
@@ -552,6 +565,7 @@ small {
     text-decoration: none;
     cursor: pointer;
 }
+
 
 /* Estilos "responsive" para adaptar la vista a diferentes pantallas*/
 @media(max-width: 990px) {
@@ -662,4 +676,11 @@ small {
 }
 .undisplayed {
     display: none;
+}
+/* Clase para el mensaje de oferta al hacer login */
+.oferta {
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    letter-spacing: -0.3px;
 }

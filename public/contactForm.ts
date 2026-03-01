@@ -3,9 +3,9 @@ interface Contacto {
     email: string;
 }
 
-const form = document.getElementById("contactForm") as HTMLFormElement;
+const contactForm = document.getElementById("contactForm") as HTMLFormElement;
 
-form.addEventListener("submit", (event) => {
+contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const contacto: Contacto = {

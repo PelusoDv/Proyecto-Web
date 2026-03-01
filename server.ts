@@ -4,6 +4,7 @@ import path from "path";
 import { conectarDB } from "./src/database";
 import { Contacto } from "./src/models/Contacto";
 import { Usuario } from "./src/models/Usuario";
+import { Producto } from "./src/models/Producto";
 
 const app = express();
 const port = 3000;
@@ -52,7 +53,8 @@ app.post("/login", async (req, res) => {
         const usuarioSeguro = {
             id: usuario._id,
             name: usuario.name,
-            email: usuario.email
+            email: usuario.email,
+            role: usuario.role
         };
 
         res.json(usuarioSeguro);
@@ -60,6 +62,72 @@ app.post("/login", async (req, res) => {
     } catch (error) {
         console.error("Error en login:", error);
         res.status(500).json({ error: "Error en el servidor" });
+    }
+});
+
+app.get("/productos", async (req, res) => {
+    try {
+        // Buscar todos los productos en la base de datos
+        const producto = await Producto.find();
+        // Enviar los productos como respuesta JSON
+        res.json(producto);
+    } catch (error) {
+        console.error("❌ Error al obtener productos:", error);
+        res.status(500).json({ error: "Error al obtener productos" });
+    }
+});
+
+app.get("/producto/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const producto = await Producto.findById(id);
+        if (!producto) {
+            return res.status(404).json({ error: "Producto no encontrado" });
+        }  
+        res.json(producto);
+    } catch (error) {
+        console.error("❌ Error al obtener producto:", error);
+        res.status(500).json({ error: "Error al obtener producto" });
+    }
+});
+
+app.post("/add-producto", async (req, res) => {
+    try {
+        const nuevoProducto = new Producto(req.body);
+        await nuevoProducto.save();
+        res.send("Producto guardado correctamente en MongoDB ✅");
+    } catch (error) {
+        console.error("Error al guardar producto:", error);
+        res.status(500).send("Error al guardar el producto ❌");
+    }
+});
+
+app.delete("/eliminar-producto/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Producto.findByIdAndDelete(id);
+        res.send("Producto eliminado correctamente de MongoDB ✅");
+    } catch (error) {
+        console.error("Error al eliminar producto:", error);
+        res.status(500).send("Error al eliminar el producto ❌");
+    }  
+});
+
+app.put("/editar-producto/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const productoActualizado = await Producto.findByIdAndUpdate(
+            id,
+            req.body,
+            { new: true, runValidators: true }
+        );
+        if (!productoActualizado) {
+            return res.status(404).send("Producto no encontrado ❌");
+        }
+        res.send("Producto editado correctamente en MongoDB ✅");
+    } catch (error) {
+        console.error("Error al editar producto:", error);
+        res.status(500).send("Error al editar el producto ❌");
     }
 });
 

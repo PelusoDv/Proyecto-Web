@@ -10,6 +10,7 @@
     <script src="TiendaCafe.js" defer></script>
     <script src="contactForm.js" defer></script>
     <script src="loginForm.js" defer></script>
+    <script src="productForm.js" defer></script>
 </head>
 
 <body>
@@ -49,7 +50,7 @@
             </button>
         </nav> <!-- Fin de barra de escritorio-->
 
-        <div id="Modal" class="modal hidden"> <!-- Modal para logearse -->
+        <div id="loginModal" class="modal hidden"> <!-- Modal para logearse -->
             <div class="modal-content">
                 <span class="close-button">&times;</span>
                 <section>
@@ -177,54 +178,21 @@
             <h2>NUESTROS PRODUCTOS</h2>
             <hr>
             <section class="cafes"> <!-- Tarjetas de productos -->
-                <div class="product-element">
-                    <a href="https://tiendadecafe.com.ar/producto/cafe-en-grano-molido-brasil/"
-                        class="product-image-link">
-                        <img src="https://tiendadecafe.com.ar/wp-content/uploads/2021/03/Productos_cafe_packs_BRASIL_frente-600x600.jpg"
-                            alt="Cafe Brasil Molido o en Grano" />
-                    </a>
-                    <h3 class="product-title"><a
-                            href="https://tiendadecafe.com.ar/producto/cafe-en-grano-molido-brasil/">Café Brasil</a>
-                    </h3>
-                </div>
-                <div class="product-element">
-                    <a href="https://tiendadecafe.com.ar/producto/cafe-en-grano-molido-barista/"
-                        class="product-image-link">
-                        <img src="https://tiendadecafe.com.ar/wp-content/uploads/2021/03/Productos_cafe_packs_BARISTA_frente-600x600.jpg"
-                            alt="Cafe Barista Molido o en Grano" />
-                    </a>
-                    <h3 class="product-title"><a
-                            href="https://tiendadecafe.com.ar/producto/cafe-en-grano-molido-barista/">Café Barista</a>
-                    </h3>
-                </div>
-                <div class="product-element">
-                    <a href="https://tiendadecafe.com.ar/producto/cafe-en-grano-molido-minka/"
-                        class="product-image-link">
-                        <img src="https://tiendadecafe.com.ar/wp-content/uploads/2021/03/Productos_cafe_packs_MINKA_frente-600x600.jpg"
-                            alt="Cafe Minka Molido o en Grano" />
-                    </a>
-                    <h3 class="product-title"><a
-                            href="https://tiendadecafe.com.ar/producto/cafe-en-grano-molido-minka/">Café Minka</a></h3>
-                </div>
-                <div class="product-element">
-                    <a href="https://tiendadecafe.com.ar/producto/capsulas-de-cafe-scegliere/"
-                        class="product-image-link">
-                        <img src="https://tiendadecafe.com.ar/wp-content/uploads/2021/04/capsulas_taza_scegliere-600x600.jpg"
-                            alt="Capsulas de Cafe Scegliere" />
-                    </a>
-                    <h3 class="product-title"><a
-                            href="https://tiendadecafe.com.ar/producto/capsulas-de-cafe-scegliere/">Cápsulas de Café
-                            Scegliere</a></h3>
-                </div>
-                <div class="product-element">
-                    <a href="https://tiendadecafe.com.ar/producto/capsulas-de-cafe-colombia/"
-                        class="product-image-link">
-                        <img src="https://tiendadecafe.com.ar/wp-content/uploads/2021/04/capsulas_taza_colombia-600x600.jpg"
-                            alt="Cápsulas de café COLOMBIA" />
-                    </a>
-                    <h3 class="product-title"><a
-                            href="https://tiendadecafe.com.ar/producto/capsulas-de-cafe-colombia/">Cápsulas de Café
-                            Colombia</a></h3>
+                <!-- *SEGMENTO GENERADO EN JAVASCRIPT CON LOS PRODUCTOS DESDE LA BASE DE DATOS* -->
+                <div id="productModal" class="modal hidden"> <!-- Modal para logearse -->
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <section>
+                            <h2 class="modalTitle"></h2>
+                            <form method="post" id="productForm">
+                                <input type="text" id="productName" placeholder="Titulo del producto">
+                                <input type="text" id="productImageUrl" placeholder="Link de la imagen del producto">
+                                <input type="text" id="productHoverImageUrl" placeholder="Link de la imagen del producto al pasar el mouse">
+                                <input type="text" id="productLinkUrl" placeholder="Link del producto">
+                                <button type="submit" class="confirmbtn"></button>
+                            </form>
+                        </section>
+                    </div>
                 </div>
             </section> <!-- Fin de las tarjetas -->
             <section class="banners"> <!-- Banners al final del articulo principal -->

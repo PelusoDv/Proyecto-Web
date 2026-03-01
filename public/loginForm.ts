@@ -1,10 +1,3 @@
-interface Usuario {
-    name: string;
-    email: string;
-    password: string;
-} 
-
-let usuarios: Usuario[] = [];
 const loginForm = document.getElementById("loginForm") as HTMLFormElement;
 
 loginForm.addEventListener("submit",  async function (event) {
