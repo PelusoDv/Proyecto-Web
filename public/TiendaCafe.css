@@ -238,10 +238,19 @@ article > h4 {
     transition: all 0.4s ease-in-out;
     opacity: 1; 
 }
-.product-image-link > img {
+.product-image-link {
+    flex-direction: column;
+}
+.product-image-link img {
     max-width: 250px;
     width: 27.5vw;
     min-width: 250px;
+}
+.product-image-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 .product-title {
     text-align: center;
@@ -261,6 +270,13 @@ article > h4 {
 .cafes button:hover {
     background-color: burlywood;
     border-color: rgb(20, 20, 20);
+}
+.hovimg {
+    position: absolute;
+    transition: transform 1.8s ease-out, opacity 0.5s ease-in-out;
+}
+.product-image-link:hover .hovimg {
+    transform: scale(1.1);
 }
 
 /*Estilo de los banner al final del articulo principal */
